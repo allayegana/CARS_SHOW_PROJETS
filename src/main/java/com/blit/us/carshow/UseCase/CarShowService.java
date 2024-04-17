@@ -27,8 +27,8 @@ public class CarShowService {
 
     public List<Carshop> findCarShow() {
         log.info("***** GET CAR ALL SERVICE *****");
-       var list =  repository.findAll();
-        if (list.isEmpty() ){
+        var list = repository.findAll();
+        if (list.isEmpty()) {
             throw new CarShopException("YOUR CARS SHOW IS EMPTY " + list);
         }
         return list;
@@ -54,7 +54,7 @@ public class CarShowService {
 
     public void removeCar(Long id) {
         log.info("***** REMOVE CAR BY ID SERVICE ****** " + id);
-        if (id == null){
+        if (id == null) {
             throw new CarShopException("NOT FIND THIS CAR WITH THIS ID " + id);
         }
         repository.deleteById(id);
