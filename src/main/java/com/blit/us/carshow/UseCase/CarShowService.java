@@ -3,6 +3,7 @@ package com.blit.us.carshow.UseCase;
 
 import com.blit.us.carshow.CarShopException;
 import com.blit.us.carshow.Entity.Carshop;
+import com.blit.us.carshow.Enum.CarshopEnum;
 import com.blit.us.carshow.Repository.CarRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -23,6 +24,12 @@ public class CarShowService {
 
     public void addNewCar(Carshop car) {
         log.info("***** ADD NEW CAR AND OWNER SERVICE ***** " + car);
+
+        if (car.getYear() == 2024) {
+            car.setCarshopEnum(CarshopEnum.NEW_CAR);
+        } else {
+            car.setCarshopEnum(CarshopEnum.THIS_CAR_IS_USE);
+        }
         repository.save(car);
     }
 

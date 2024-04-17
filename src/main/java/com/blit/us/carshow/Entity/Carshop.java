@@ -1,6 +1,8 @@
 package com.blit.us.carshow.Entity;
 
 
+import com.blit.us.carshow.Enum.CarshopEnum;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +27,10 @@ public class Carshop implements Serializable {
     private String registerNumber;
     private int year;
     private int price;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "CAR_STATUS")
+    @JsonProperty("CAR_STATUS")
+    private CarshopEnum carshopEnum;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "owner")
     private OwnerCar owner;
