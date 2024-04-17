@@ -26,28 +26,28 @@ public class CarShowControllers implements Serializable {
 
     @GetMapping("/car")
     @ResponseStatus(HttpStatus.OK)
-    public List<Carshop> findallCar() {
-        log.info("FIND ALL CARS");
-        return service.findcar();
+    public List<Carshop> findAllCar() {
+        log.info("***** GET ALL CARS CONTROLLER ***** ");
+        return service.findCarShow();
     }
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public void addNewCar(@RequestBody Carshop car) {
-        log.info("ADD NEW CAR " + car);
+        log.info("***** ADD NEW CAR CONTROLLER *****");
         service.addNewCar(car);
     }
 
     @GetMapping("/car/{id}")
     public Optional<Carshop> getcarById(@PathVariable("id") Long id) {
-        log.info("FIND CAR BY ID " + id);
+        log.info("FIND CAR BY ID CONTROLLER " + id);
         return service.getCarById(id);
     }
 
     @DeleteMapping("/car/{id}")
     public void removeCar(@PathVariable("id") Long id) {
         service.removeCar(id);
-        log.info("REMOVE CAR BY ID " + id);
+        log.info("***** REMOVE CAR BY ID CONTROLLER ******" + id);
 
     }
 
@@ -56,7 +56,7 @@ public class CarShowControllers implements Serializable {
     @Transactional
     public void updateCar(@PathVariable("id") Long id, @RequestBody Carshop car) {
         service.updateCar(id, car);
-        log.info("UPDATE CAR BY ID " + car);
+        log.info("***** UPDATE CAR BY ID CONTROLLER ***** " + car);
     }
 
 }
