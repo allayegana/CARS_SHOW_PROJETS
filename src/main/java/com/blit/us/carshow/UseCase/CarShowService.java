@@ -7,6 +7,7 @@ import com.blit.us.carshow.Repository.CarRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,7 +28,8 @@ public class CarShowService {
 
     public List<Carshop> findCarShow() {
         log.info("***** GET CAR ALL SERVICE *****");
-        var list = repository.findAll();
+        Sort sort = Sort.by("id").descending();
+        var list = repository.findAll(sort);
         if (list.isEmpty()) {
             throw new CarShopException("YOUR CARS SHOW IS EMPTY " + list);
         }

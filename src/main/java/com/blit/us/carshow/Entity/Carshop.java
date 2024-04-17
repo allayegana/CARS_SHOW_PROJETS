@@ -11,7 +11,6 @@ import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Data
 @Table(name = "Cars")
 @Entity
