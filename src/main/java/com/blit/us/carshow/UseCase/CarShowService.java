@@ -28,7 +28,7 @@ public class CarShowService {
         if (car.getYear() == 2024) {
             car.setCarshopEnum(CarshopEnum.NEW_CAR);
         } else {
-            car.setCarshopEnum(CarshopEnum.THIS_CAR_IS_USE);
+            car.setCarshopEnum(CarshopEnum.USED_CAR);
         }
         repository.save(car);
     }

@@ -6,6 +6,8 @@ import com.blit.us.carshow.UseCase.CarShowService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,15 +33,17 @@ public class CarShowControllers implements Serializable {
         return service.findCarShow();
     }
 
+
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public void addNewCar(@RequestBody Carshop car) {
         log.info("***** ADD NEW CAR CONTROLLER *****");
         service.addNewCar(car);
     }
 
     @GetMapping("/car/{id}")
-    public Optional<Carshop> getcarById(@PathVariable("id") Long id) {
+    public Optional<Carshop> getCarById(@PathVariable("id") Long id) {
         log.info("FIND CAR BY ID CONTROLLER " + id);
         return service.getCarById(id);
     }
